@@ -18,6 +18,7 @@ import (
 	"github.com/fsnotify/fsnotify"
 	"github.com/gempir/go-twitch-irc"
 	"github.com/getlantern/systray"
+	"mvdan.cc/xurls/v2"
 
 	icon "./icons"
 )
@@ -33,8 +34,8 @@ func onReady() {
 	go watch()
 
 	systray.SetIcon(icon.Data)
-	systray.SetTitle("PinkParot v1.0 (dev:camenduru)")
-	systray.SetTooltip("PinkParot v1.0 (dev:camenduru)")
+	systray.SetTitle("PinkParot v1.1 (dev:camenduru)")
+	systray.SetTooltip("PinkParot v1.1 (dev:camenduru)")
 
 	exe, err := os.Executable()
 	if err != nil {
@@ -156,8 +157,15 @@ func task() {
 
 	// Get Twitch Chat
 	client.OnPrivateMessage(func(message twitch.PrivateMessage) {
-		text := message.Message
 		to := settings["to"]
+		text := message.Message
+
+		// Check URL
+		rxRelaxed := xurls.Relaxed()
+		url := rxRelaxed.FindString(text)
+		if url != "" {
+			text = strings.ReplaceAll(text, url, "url")
+		}
 
 		if settings["auto"] == "on" {
 			from := "auto"
