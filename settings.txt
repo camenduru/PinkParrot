@@ -3,6 +3,7 @@ username          ~
 channel           ~ 
 auto              ~ off
 audio             ~ off
+translate         ~ off
 to                ~ ja
 first_char        ~ =
 jp_first_char     ~ ＝

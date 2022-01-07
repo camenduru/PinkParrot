@@ -179,13 +179,17 @@ func task() {
 				if err != nil {
 					panic(err)
 				}
-				client.Say(settings["channel"], fmt.Sprintf("/me %s [by %s] | (%s > %s) \n", translated, message.User.Name, src, to))
+				if settings["translate"] == "on" {
+					client.Say(settings["channel"], fmt.Sprintf("/me %s [by %s] | (%s > %s) \n", translated, message.User.Name, src, to))
+				}
 				if settings["audio"] == "on" {
 					GoogleSpeak(message.User.Name, "en")
 					GoogleSpeak(translated, to)
 				}
 			} else {
-				client.Say(settings["channel"], fmt.Sprintf("/me %s [by %s] | (%s > %s) \n", translated, message.User.Name, src, to))
+				if settings["translate"] == "on" {
+					client.Say(settings["channel"], fmt.Sprintf("/me %s [by %s] | (%s > %s) \n", translated, message.User.Name, src, to))
+				}
 				if settings["audio"] == "on" {
 					GoogleSpeak(message.User.Name, "en")
 					GoogleSpeak(translated, to)
@@ -208,13 +212,17 @@ func task() {
 					if err != nil {
 						panic(err)
 					}
-					client.Say(settings["channel"], fmt.Sprintf("/me %s [by %s] | (%s > %s) \n", translated, message.User.Name, src, to))
+					if settings["translate"] == "on" {
+						client.Say(settings["channel"], fmt.Sprintf("/me %s [by %s] | (%s > %s) \n", translated, message.User.Name, src, to))
+					}
 					if settings["audio"] == "on" {
 						GoogleSpeak(message.User.Name, "en")
 						GoogleSpeak(translated, to)
 					}
 				} else {
-					client.Say(settings["channel"], fmt.Sprintf("/me %s [by %s] | (%s > %s) \n", translated, message.User.Name, src, to))
+					if settings["translate"] == "on" {
+						client.Say(settings["channel"], fmt.Sprintf("/me %s [by %s] | (%s > %s) \n", translated, message.User.Name, src, to))
+					}
 					if settings["audio"] == "on" {
 						GoogleSpeak(message.User.Name, "en")
 						GoogleSpeak(translated, to)
