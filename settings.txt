@@ -3,6 +3,7 @@ username          ~
 channel           ~ 
 auto              ~ off
 audio             ~ off
+read_username     ~ on
 translate         ~ off
 to                ~ ja
 first_char        ~ =

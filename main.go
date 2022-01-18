@@ -34,8 +34,8 @@ func onReady() {
 	go watch()
 
 	systray.SetIcon(icon.Data)
-	systray.SetTitle("PinkParot v1.1 (dev:camenduru)")
-	systray.SetTooltip("PinkParot v1.1 (dev:camenduru)")
+	systray.SetTitle("PinkParot v1.2 (dev:camenduru)")
+	systray.SetTooltip("PinkParot v1.2 (dev:camenduru)")
 
 	exe, err := os.Executable()
 	if err != nil {
@@ -183,7 +183,9 @@ func task() {
 					client.Say(settings["channel"], fmt.Sprintf("/me %s [by %s] | (%s > %s) \n", translated, message.User.Name, src, to))
 				}
 				if settings["audio"] == "on" {
-					GoogleSpeak(message.User.Name, "en")
+					if settings["read_username"] == "on" {
+						GoogleSpeak(message.User.Name, "en")
+					}
 					GoogleSpeak(translated, to)
 				}
 			} else {
@@ -191,7 +193,9 @@ func task() {
 					client.Say(settings["channel"], fmt.Sprintf("/me %s [by %s] | (%s > %s) \n", translated, message.User.Name, src, to))
 				}
 				if settings["audio"] == "on" {
-					GoogleSpeak(message.User.Name, "en")
+					if settings["read_username"] == "on" {
+						GoogleSpeak(message.User.Name, "en")
+					}
 					GoogleSpeak(translated, to)
 				}
 			}
@@ -216,7 +220,9 @@ func task() {
 						client.Say(settings["channel"], fmt.Sprintf("/me %s [by %s] | (%s > %s) \n", translated, message.User.Name, src, to))
 					}
 					if settings["audio"] == "on" {
-						GoogleSpeak(message.User.Name, "en")
+						if settings["read_username"] == "on" {
+							GoogleSpeak(message.User.Name, "en")
+						}
 						GoogleSpeak(translated, to)
 					}
 				} else {
@@ -224,7 +230,9 @@ func task() {
 						client.Say(settings["channel"], fmt.Sprintf("/me %s [by %s] | (%s > %s) \n", translated, message.User.Name, src, to))
 					}
 					if settings["audio"] == "on" {
-						GoogleSpeak(message.User.Name, "en")
+						if settings["read_username"] == "on" {
+							GoogleSpeak(message.User.Name, "en")
+						}
 						GoogleSpeak(translated, to)
 					}
 				}
